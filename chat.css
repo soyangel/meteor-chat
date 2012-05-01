@@ -2,6 +2,10 @@
 
 body {
     font-family: Helvetica-neue, helvetica, arial;
+    padding: 1em;
+}
+
+.message {
 }
 
 .message .time {
@@ -17,13 +21,10 @@ body {
 }
 
 .message .edit {
-    cursor: pointer;
-    font-style: italic;
-    font-weight: bold;
     margin-left: 0.5em;
-    display: none;
+    visibility: hidden;
 }
 
 .message:hover .edit {
-    display: inline;
+    visibility: visible;
 }

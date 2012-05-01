@@ -9,8 +9,8 @@
 
 <template name="entry">
 <div class="entry">
-    User <input type="text" id="nick" value="Anonymous"><br>
-    Message <input type="text" id="entry" size="40" placeholder="Enter text...">
+    <strong>User</strong> <input class="input-small" type="text" id="nick" value="Anonymous"><br>
+    <strong>Message</strong> <input type="text" id="entry" size="40" placeholder="Enter message and press Intro...">
 </div>
 </template>
 
@@ -25,5 +25,5 @@
 
 
 <template name="message">
-<div class="message"><span class="time">{{formatted_time}}</span><span class="nick">{{nick}}:</span><span class="message">{{message}}</span><span class="edit">EDIT</span></div>
+<div class="message"><span class="time">{{formatted_time}}</span><span class="nick">{{nick}}:</span><span class="text">{{message}}</span><input type="button" class="btn btn-primary btn-mini edit" value="EDIT"></div>
 </template>
