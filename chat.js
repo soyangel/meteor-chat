@@ -25,35 +25,62 @@ if (Meteor.is_client) {
         return date.toLocaleTimeString();
     };
 
-    Template.message.events = {
-        'click .edit': function (event) {
-            var messageDiv = $(event.target).parent();
-            var message = messageDiv.find('.message');
 
-            if (message.get(0).tagName == 'INPUT')
+    function finishMessageEdit(messageId, messageDiv)
+    {
+        var messageText = messageDiv.find('.text');
+
+        Meteor.call('changeMessage', messageId, messageText.val(), function (error, result) {
+
+            if (error)
             {
-                Meteor.call('changeMessage', this._id, message.val(), function (error, result) {
-
-                    if (error)
-                    {
-                        alert(error);
-                    }
-                    else
-                    {
-                        message.replaceWith(function (){
-                            return '<span class="message">' + $(this).html() + '</span>';
-                        });
-                        messageDiv.find('.edit').html('EDIT');
-                    }
-
-                });
+                alert(error);
             }
             else
             {
-                message.replaceWith(function (){
-                    return '<input type="text" class="message" value="' + $(this).html() + '">';
+                messageText.replaceWith(function (){
+                    return '<span class="text">' + $(this).val() + '</span>';
                 });
-                messageDiv.find('.edit').html('DONE');
+                messageDiv.find('.edit').val('EDIT');
+            }
+
+        });
+    }
+
+    function startMessageEdit(messageId, messageDiv)
+    {
+        var messageText = messageDiv.find('.text');
+
+        var messageInput = $('<input type="text" class="text" value="' + messageText.html() + '">');
+
+        messageInput.keyup(function(event) {
+            if (event.keyCode == 13)
+            finishMessageEdit(messageId, messageDiv);
+        });
+
+        messageText.replaceWith(function (){
+            return messageInput;
+        });
+
+        messageInput.focus();
+
+        messageDiv.find('.edit').val('DONE');
+
+    }
+
+
+    Template.message.events = {
+        'click .edit': function (event) {
+            var messageDiv = $(event.target).parent();
+            var messageText = messageDiv.find('.text');
+
+            if (messageText.get(0).tagName == 'INPUT')
+            {
+                finishMessageEdit(this._id, messageDiv);
+            }
+            else
+            {
+                startMessageEdit(this._id, messageDiv);
             }
 
         }
