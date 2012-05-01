@@ -1,0 +1,29 @@
+/* CSS declarations go here */
+
+body {
+    font-family: Helvetica-neue, helvetica, arial;
+}
+
+.message .time {
+    font-size: 0.8em;
+    color: #333;
+    margin-right: 0.7em;
+}
+
+.message .nick {
+    color: #000;
+    font-weight: bold;
+    margin-right: 0.7em;
+}
+
+.message .edit {
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 0.5em;
+    display: none;
+}
+
+.message:hover .edit {
+    display: inline;
+}
