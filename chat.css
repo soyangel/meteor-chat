@@ -1,11 +1,15 @@
-/* CSS declarations go here */
-
 body {
-    font-family: Helvetica-neue, helvetica, arial;
     padding: 1em;
 }
 
-.message {
+.title {
+    font-family: Rancho;
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.messages {
+    margin-bottom: 1em;
 }
 
 .message .time {
@@ -28,4 +32,8 @@ body {
 
 .message:hover .edit {
     visibility: visible;
+}
+
+.entry input {
+    margin-bottom: 0px;
 }

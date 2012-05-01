@@ -1,28 +1,28 @@
 <head>
+    <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
     <title>chat</title>
 </head>
 
 <body>
-    {{> entry}}
     {{> messages}}
+    {{> entry}}
 </body>
 
-<template name="entry">
-<div class="entry">
-    <strong>User</strong> <input class="input-small" type="text" id="nick" value="Anonymous"><br>
-    <strong>Message</strong> <input type="text" id="entry" size="40" placeholder="Enter message and press Intro...">
-</div>
-</template>
-
 <template name="messages">
-<div class="chat">
-    <h2>Messages</h2>
+<div class="messages span6 offset3">
+    <h1 class="title">Just chat</h1>
     {{#each messages}}
     {{> message}}
     {{/each}}
 </div>
 </template>
 
+<template name="entry">
+<div class="entry well span6 offset3">
+    <input class="input-small" type="text" id="nick" value="Anonymous"> says
+    <input type="text" id="entry" class="span4" placeholder="Enter message and press Intro...">
+</div>
+</template>
 
 <template name="message">
 <div class="message"><span class="time">{{formatted_time}}</span><span class="nick">{{nick}}:</span><span class="text">{{message}}</span><i class="edit icon-pencil"></i></div>
