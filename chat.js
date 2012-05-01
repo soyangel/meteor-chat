@@ -41,7 +41,7 @@ if (Meteor.is_client) {
                 messageText.replaceWith(function (){
                     return '<span class="text">' + $(this).val() + '</span>';
                 });
-                messageDiv.find('.edit').val('EDIT');
+                messageDiv.find('.edit').removeClass('icon-ok').addClass('icon-pencil');
             }
 
         });
@@ -64,8 +64,7 @@ if (Meteor.is_client) {
 
         messageInput.focus();
 
-        messageDiv.find('.edit').val('DONE');
-
+        messageDiv.find('.edit').removeClass('icon-pencil').addClass('icon-ok');
     }
 
 
